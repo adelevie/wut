@@ -3,6 +3,8 @@
 A small Javascript templating library.
 Probably not very useful in the real world, but it works, and was a joy to build.
 
+Templates, written in Javascript.
+
 Usage:
 
 ```javascript
