@@ -34,5 +34,16 @@ test("Testing self-closing tag", function() {
   console.assert(result == "<input value=\"My Input\"/>\n", "input makeTag self-closing tag failed:\n" + result + "\n\n");
 });
 
+test("Testing making a multi-line script tag", function() {
+  var script = makeTag("script");
+  var i = 0;
+  var result = script({type: "text/javascript"}, function(){
+    var i = 10;
+    i += 1;
+  }.toString() + "();");
+  console.assert(i == 0, "Script has side effects! Failed.");
+  console.assert(result == "<script type=\"text/javascript\">\nfunction (){\n    var i = 10;\n    i += 1;\n  }();\n</script>\n", "script tag test failed:\n" + result);
+});
+
 console.log("Tests completed successfully. " + tests + " specs, " + tests + " successful, 0 failures.");
 
