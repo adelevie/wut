@@ -53,6 +53,7 @@
         attributes = _.first(args);
         selfClosing = (_.rest(args).length == 0);
         value = _.rest(args).join("");
+        if(_.isFunction(_.last(args))) value = value + "();";
       } else {
         selfClosing = (args.length == 0);
         value = args.join("");
@@ -66,7 +67,7 @@
   };
 
   var script = function(name) {
-    
+
   }
 
   module.exports.makeTag = makeTag;
