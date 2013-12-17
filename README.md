@@ -75,3 +75,7 @@ html({"ng-app":null},
 ## Installation
 
 `npm install wut`
+
+### License
+
+(c) 2013 Alan deLevie. See `package.json` for license.
