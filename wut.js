@@ -44,18 +44,20 @@
   // Returns functions that create HTML/XML tags.
   // The returned function takes an optional first argument object for the HTML/XML attributes.
   // All or the rest of the arguments are concatenated into a single string.
-  var makeTag = function(name, selfClosing) {
+  var makeTag = function(name) {
     return function() {
-      var args = Array.prototype.slice.call(arguments);
-      var value;
-      var attributes; 
+      var args, value, attributes, selfClosing;
+      
+      args = Array.prototype.slice.call(arguments);
       if (_.isObject(_.first(args))) {
         attributes = _.first(args);
+        selfClosing = (_.rest(args).length == 0);
         value = _.rest(args).join("");
       } else {
+        selfClosing = (args.length == 0);
         value = args.join("");
       };
-      if(selfClosing == "/") {
+      if(selfClosing) {
         return t(openTag(name, attributes, true))(value) + "\n";
       } else {
         return t(openTag(name, attributes) + "\n<%= v %>\n" + closeTag(name))(value) + "\n";
