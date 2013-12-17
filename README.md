@@ -26,16 +26,27 @@ wut.pollute();
 p("foo"); 
 //=> <p>foo</p>
 
+// Use a self-closing tag by omitting the innerHTML:
+hr();
+//=> <hr/>
+input({value: "mytest"});
+//=> <input value="mytest"/>
+
+// Empty string for empty tag:
+p("");
+//=> <p></p>
+
 // Nest some tags:
 html(
   body(
     ul(
       li("Item one"),
       li("Item two")
-    )
+    ),
+    hr()
   )
 );
-//=> <html><body><ul><li>Item one</li><li>Item two</li></ul></body></html> 
+//=> <html><body><ul><li>Item one</li><li>Item two</li></ul><hr/></body></html> 
 
 // Set attributes:
 a({href: "http://google.com"}, "Click Here");
