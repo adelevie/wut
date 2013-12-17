@@ -1,6 +1,6 @@
 {
   "name": "wut",
-  "version": "0.0.2",
+  "version": "0.0.0",
   "description": "write templates in js",
   "main": "wut.js",
   "scripts": {
