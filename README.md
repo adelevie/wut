@@ -29,6 +29,7 @@ p("foo");
 // Use a self-closing tag by omitting the innerHTML:
 hr();
 //=> <hr/>
+
 input({value: "mytest"});
 //=> <input value="mytest"/>
 
