@@ -65,5 +65,10 @@
     };
   };
 
+  var script = function(name) {
+    
+  }
+
   module.exports.makeTag = makeTag;
+  module.exports.script = script;
 })();

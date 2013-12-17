@@ -52,6 +52,22 @@ html(
 a({href: "http://google.com"}, "Click Here");
 // => <a href='http://google.com'>Click Here</a>
 
+// Output a script tag with real javascript:
+script({type: "text/javascript"}, function(){
+  var i = 10;
+  i += 1;
+}.toString() + "();");
+
+/* Outputs:
+<script type="text/javascript">
+  function (){
+    var i = 10;
+    i += 1;
+  }();
+</script>
+*/
+
+
 var html = makeTag("html");
 var body = makeTag("body");
 var p = makeTag("p");
