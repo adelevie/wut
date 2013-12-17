@@ -1,0 +1,126 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish', '.' ]
+2 info using npm@1.2.24
+3 info using node@v0.10.9
+4 verbose publish [ '.' ]
+5 verbose read json /Users/adelevie/programming/wut/package.json
+6 warn package.json wut@0.0.2 No repository field.
+7 verbose cache add [ '.', null ]
+8 verbose cache add name=undefined spec="." args=[".",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: '.',
+9 verbose parsed url   path: '.',
+9 verbose parsed url   href: '.' }
+10 silly lockFile 3a52ce78- .
+11 verbose lock . /Users/adelevie/.npm/3a52ce78-.lock
+12 verbose read json package.json
+13 verbose tar pack [ '/var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz',
+13 verbose tar pack   '.' ]
+14 verbose tarball /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+15 verbose folder .
+16 info prepublish wut@0.0.2
+17 silly lockFile 3a52ce78- .
+18 verbose lock . /Users/adelevie/.npm/3a52ce78-.lock
+19 silly lockFile 4cc01f5b-9033-0-25053707021288574-tmp-tgz /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+20 verbose lock /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz /Users/adelevie/.npm/4cc01f5b-9033-0-25053707021288574-tmp-tgz.lock
+21 silly lockFile 3a52ce78- .
+22 silly lockFile 3a52ce78- .
+23 silly lockFile 4cc01f5b-9033-0-25053707021288574-tmp-tgz /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+24 silly lockFile 4cc01f5b-9033-0-25053707021288574-tmp-tgz /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+25 verbose tar unpack /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+26 silly lockFile ec742f52-9033-0-25053707021288574-package /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package
+27 verbose lock /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package /Users/adelevie/.npm/ec742f52-9033-0-25053707021288574-package.lock
+28 silly lockFile 4cc01f5b-9033-0-25053707021288574-tmp-tgz /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+29 verbose lock /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz /Users/adelevie/.npm/4cc01f5b-9033-0-25053707021288574-tmp-tgz.lock
+30 silly gunzTarPerm modes [ '755', '644' ]
+31 silly gunzTarPerm extractEntry package.json
+32 silly gunzTarPerm extractEntry README.md
+33 silly gunzTarPerm extractEntry test.js
+34 silly gunzTarPerm extractEntry wut.js
+35 verbose read json /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package/package.json
+36 silly lockFile ec742f52-9033-0-25053707021288574-package /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package
+37 silly lockFile ec742f52-9033-0-25053707021288574-package /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package
+38 silly lockFile 4cc01f5b-9033-0-25053707021288574-tmp-tgz /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+39 silly lockFile 4cc01f5b-9033-0-25053707021288574-tmp-tgz /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/tmp.tgz
+40 verbose from cache /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package/package.json
+41 verbose tar pack [ '/Users/adelevie/.npm/wut/0.0.2/package.tgz',
+41 verbose tar pack   '/var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package' ]
+42 verbose tarball /Users/adelevie/.npm/wut/0.0.2/package.tgz
+43 verbose folder /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package
+44 silly lockFile ec742f52-9033-0-25053707021288574-package /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package
+45 verbose lock /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package /Users/adelevie/.npm/ec742f52-9033-0-25053707021288574-package.lock
+46 silly lockFile cba6df1b-elevie-npm-wut-0-0-2-package-tgz /Users/adelevie/.npm/wut/0.0.2/package.tgz
+47 verbose lock /Users/adelevie/.npm/wut/0.0.2/package.tgz /Users/adelevie/.npm/cba6df1b-elevie-npm-wut-0-0-2-package-tgz.lock
+48 silly lockFile ec742f52-9033-0-25053707021288574-package /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package
+49 silly lockFile ec742f52-9033-0-25053707021288574-package /var/folders/1m/fb9g9_mx1mjbs1s_dl6h8xc80000gn/T/npm-17092/1387260749033-0.25053707021288574/package
+50 silly lockFile cba6df1b-elevie-npm-wut-0-0-2-package-tgz /Users/adelevie/.npm/wut/0.0.2/package.tgz
+51 silly lockFile cba6df1b-elevie-npm-wut-0-0-2-package-tgz /Users/adelevie/.npm/wut/0.0.2/package.tgz
+52 silly lockFile 34f94307-s-adelevie-npm-wut-0-0-2-package /Users/adelevie/.npm/wut/0.0.2/package
+53 verbose lock /Users/adelevie/.npm/wut/0.0.2/package /Users/adelevie/.npm/34f94307-s-adelevie-npm-wut-0-0-2-package.lock
+54 silly lockFile 34f94307-s-adelevie-npm-wut-0-0-2-package /Users/adelevie/.npm/wut/0.0.2/package
+55 silly lockFile 34f94307-s-adelevie-npm-wut-0-0-2-package /Users/adelevie/.npm/wut/0.0.2/package
+56 verbose tar unpack /Users/adelevie/.npm/wut/0.0.2/package.tgz
+57 silly lockFile 34f94307-s-adelevie-npm-wut-0-0-2-package /Users/adelevie/.npm/wut/0.0.2/package
+58 verbose lock /Users/adelevie/.npm/wut/0.0.2/package /Users/adelevie/.npm/34f94307-s-adelevie-npm-wut-0-0-2-package.lock
+59 silly lockFile cba6df1b-elevie-npm-wut-0-0-2-package-tgz /Users/adelevie/.npm/wut/0.0.2/package.tgz
+60 verbose lock /Users/adelevie/.npm/wut/0.0.2/package.tgz /Users/adelevie/.npm/cba6df1b-elevie-npm-wut-0-0-2-package-tgz.lock
+61 silly gunzTarPerm modes [ '755', '644' ]
+62 silly gunzTarPerm extractEntry package.json
+63 silly gunzTarPerm extractEntry README.md
+64 silly gunzTarPerm extractEntry test.js
+65 silly gunzTarPerm extractEntry wut.js
+66 verbose read json /Users/adelevie/.npm/wut/0.0.2/package/package.json
+67 silly lockFile 34f94307-s-adelevie-npm-wut-0-0-2-package /Users/adelevie/.npm/wut/0.0.2/package
+68 silly lockFile 34f94307-s-adelevie-npm-wut-0-0-2-package /Users/adelevie/.npm/wut/0.0.2/package
+69 silly lockFile cba6df1b-elevie-npm-wut-0-0-2-package-tgz /Users/adelevie/.npm/wut/0.0.2/package.tgz
+70 silly lockFile cba6df1b-elevie-npm-wut-0-0-2-package-tgz /Users/adelevie/.npm/wut/0.0.2/package.tgz
+71 verbose from cache /Users/adelevie/.npm/wut/0.0.2/package/package.json
+72 verbose chmod /Users/adelevie/.npm/wut/0.0.2/package.tgz 644
+73 verbose chown /Users/adelevie/.npm/wut/0.0.2/package.tgz [ 501, 20 ]
+74 silly lockFile 3a52ce78- .
+75 silly publish { name: 'wut',
+75 silly publish   version: '0.0.2',
+75 silly publish   description: 'write templates in js',
+75 silly publish   main: 'wut.js',
+75 silly publish   scripts: { test: 'node test.js' },
+75 silly publish   repository: '',
+75 silly publish   author: { name: 'Alan deLevie, Jamon Holmgren' },
+75 silly publish   license: 'MIT',
+75 silly publish   dependencies: { underscore: '*' },
+75 silly publish   readme: '# wut\n\nA small Javascript templating library.\nProbably not very useful in the real world, but it works, and was a joy to build.\n\nTemplates, written in Javascript.\n\nUsage:\n\n```javascript\nvar wut = require(\'wut\');\nvar makeTag = wut.makeTag;\n\n// Create some tags:\nvar html = makeTag("html");\nvar body = makeTag("body");\nvar ul = makeTag("ul");\nvar li = makeTag("li");\nvar p = makeTag("p");\nvar a = makeTag("a");\n\n// Or pollute the scope with some premade tag functions (Coming Soon!):\nwut.pollute();\n\n// Use a single tag:\np("foo"); \n//=> <p>foo</p>\n\n// Nest some tags:\nhtml(\n  body(\n    ul(\n      li("Item one"),\n      li("Item two")\n    )\n  )\n);\n//=> <html><body><ul><li>Item one</li><li>Item two</li></ul></body></html> \n\n// Set attributes:\na({href: "http://google.com"}, "Click Here");\n// => <a href=\'http://google.com\'>Click Here</a>\n\nvar html = makeTag("html");\nvar body = makeTag("body");\nvar p = makeTag("p");\nvar span = makeTag("span");\nvar head = makeTag("head");\nvar script = makeTag("script");\nvar div = makeTag("div");\nvar input = makeTag("input");\nvar hr = makeTag("hr");\n\n// Angular.js app (it actually works!):\nhtml({"ng-app":null},\n  head(\n    script({src:"http://code.angularjs.org/1.2.5/angular.min.js"}),\n    script([\n      "function HelloCntl($scope) {",\n      "  $scope.name = \'World\';",\n      "}"\n    ].join("\\n"))\n  ),\n  body(\n    div({"ng-controller":"HelloCntl"},\n      span(\n        p("Your Name: "),\n        input({type:"text", "ng-model":"name"}),\n        hr(),\n        p("Hello {{name || \'world\'}}!")\n      )\n    )\n  )\n);\n```\n\n## Installation\n\n`npm install wut`\n\n### License\n\n(c) 2013 Alan deLevie. See `package.json` for license.\n',
+75 silly publish   readmeFilename: 'README.md',
+75 silly publish   _id: 'wut@0.0.2',
+75 silly publish   dist: { shasum: '64cf1bbd3d8953b072dd670d14a5a480e399274c' },
+75 silly publish   _from: '.' }
+76 verbose url raw wut
+77 verbose url resolving [ 'https://registry.npmjs.org/', './wut' ]
+78 verbose url resolved https://registry.npmjs.org/wut
+79 info trying registry request attempt 1 at 01:13:29
+80 http PUT https://registry.npmjs.org/wut
+81 http 201 https://registry.npmjs.org/wut
+82 verbose url raw wut
+83 verbose url resolving [ 'https://registry.npmjs.org/', './wut' ]
+84 verbose url resolved https://registry.npmjs.org/wut
+85 info trying registry request attempt 1 at 01:13:33
+86 http GET https://registry.npmjs.org/wut
+87 http 404 https://registry.npmjs.org/wut
+88 error 404 'wut' is not in the npm registry.
+88 error 404 You should bug the author to publish it
+88 error 404
+88 error 404 Note that you can also install from a
+88 error 404 tarball, folder, or http url, or git url.
+89 error System Darwin 12.0.0
+90 error command "/usr/local/bin/node" "/usr/local/bin/npm" "publish" "."
+91 error cwd /Users/adelevie/programming/wut
+92 error node -v v0.10.9
+93 error npm -v 1.2.24
+94 error code E404
+95 verbose exit [ 1, true ]
