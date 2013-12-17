@@ -1,12 +1,12 @@
 {
   "name": "wut",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "write templates in js",
   "main": "wut.js",
   "scripts": {
     "test": "node test.js"
   },
-  "repository": "",
+  "repository": "https://github.com/adelevie/wut",
   "author": "Alan deLevie, Jamon Holmgren",
   "license": "MIT",
   "dependencies": {
