@@ -71,7 +71,6 @@
     };
   };
 
-
   var htmlElements = [
     "a","abbr","address","area","article","aside","audio",
     "b","base","bdi","bdo","blockquote","body","br","button",
@@ -107,7 +106,6 @@
     scope.doctype = doctype;
     return htmlElements;
   }
-
 
   exportScope = (isServer) ? module.exports : window.wut = {};
   exportScope.makeTag = makeTag;
