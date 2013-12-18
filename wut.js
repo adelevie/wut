@@ -1,17 +1,71 @@
 (function() {
-  var isServer = (typeof window === 'undefined');
-  if (isServer) {
-    var _ = require('underscore');
-  } else {
-    var _ = window._;
-  }
+  // Creating a shim to replace underscore.js:
+  var _ = {}; 
+
+  _.first = function(collection) { return collection[0]; };
+  _.isNull = function(obj) { return obj === null; };
+  _.isObject = function(obj) { return obj === Object(obj); };
+  _.isUndefined = function(obj) { return obj === void 0; };
+  _.isFunction = function(obj) { return typeof obj === 'function'; };
+
+  var ArrayProto = Array.prototype;
+  var nativeMap = ArrayProto.map;
+  _.map = function(obj, iterator, context) {
+    var results = [];
+    if (obj == null) return results;
+    if (nativeMap && obj.map === nativeMap) return obj.map(iterator, context);
+    each(obj, function(value, index, list) {
+      results.push(iterator.call(context, value, index, list));
+    });
+    return results;
+  };
+
+  var slice = ArrayProto.slice;
+   _.rest = function(array, n, guard) {
+    return slice.call(array, (n == null) || guard ? 1 : n);
+  };
+
+  _.last = function(array, n, guard) {
+    if (array == null) return void 0;
+    if ((n == null) || guard) {
+      return array[array.length - 1];
+    } else {
+      return slice.call(array, Math.max(array.length - n, 0));
+    }
+  };
+
+  var nativeKeys = Object.keys;
+  _.keys = nativeKeys || function(obj) {
+    if (obj !== Object(obj)) throw new TypeError('Invalid object');
+    var keys = [];
+    for (var key in obj) if (_.has(obj, key)) keys.push(key);
+    return keys;
+  };
+
+  var nativeForEach = ArrayProto.forEach;
+  _.each = function(obj, iterator, context) {
+    if (obj == null) return;
+    if (nativeForEach && obj.forEach === nativeForEach) {
+      obj.forEach(iterator, context);
+    } else if (obj.length === +obj.length) {
+      for (var i = 0, length = obj.length; i < length; i++) {
+        if (iterator.call(context, obj[i], i, obj) === breaker) return;
+      }
+    } else {
+      var keys = _.keys(obj);
+      for (var i = 0, length = keys.length; i < length; i++) {
+        if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
+      }
+    }
+  };
+  // end shim
 
   // Returns a templating function that's sort of curried.
   // Rather than take an object with multiple keys and values, 
   // the returned function takes a single argument.
   var t = function(template, value) {
-    return function (value) {
-      return _.template(template)({v: value});
+    return function(value) {
+      return template.split("<%= v %>").join(value);
     };
   };
 
@@ -107,6 +161,7 @@
     return htmlElements;
   }
 
+  var isServer = (typeof window === 'undefined');
   if (isServer) {
     var fs = require('fs');
     var minified = fs.readFileSync(__dirname+'/wut.min.js').toString();
