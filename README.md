@@ -110,10 +110,96 @@ html({"ng-app":null},
 
 ## Sharing templates between client and server
 
-`wut` makes this easy!
+Because `wut` runs on the client and the server, you just need your client-side code and server-side code to access whatever scope the templates are stored. Here's a sample application that does just that:
 
 ```javascript
+var isServer = (typeof window === 'undefined');
 
+var wut;
+if (isServer) {
+  wut = require('wut');
+} else {
+  wut = window.wut;
+}
+
+var makeTag = wut.makeTag;
+var html = makeTag("html");
+var head = makeTag("head");
+var script = makeTag("script");
+var body = makeTag("body");
+var div = makeTag("div");
+var ul = makeTag("ul");
+var li = makeTag("li");
+var p = makeTag("p");
+var a = makeTag("a");
+
+// Notice that this is called in doServer and doClient
+var todoTemplate = function(content) {
+  return li(a({href: "http://google.com"}, content));
+};
+
+var doServer = function() {
+  var express = require('express');
+  var app = express();
+  app.use(express.bodyParser());
+  var _ = require('underscore');
+  
+  var underscoreCdn = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js";
+  var jqCdn = "http://code.jquery.com/jquery-1.10.1.min.js";
+
+  var layout = function(content) {
+    return html(
+      head(
+        script({src: underscoreCdn}, ""),
+        script({src: jqCdn}, ""),
+        script(wut.minified),
+        script({src: "app.js"}, "")
+      ),
+      body(content)
+    );
+  };
+
+  var each = function(collection, handler) {
+    return _.map(collection, handler).join("");
+  };
+
+  app.get('/', function(request, response) {
+    var todos = [
+      {text: "Get the milk"},
+      {text: "Rendered from the server"}
+    ];
+    var content = div(
+      ul({id: "todos"},
+        each(todos, function(todo) {
+          return todoTemplate(todo.text);
+        })
+      )
+    );
+    response.send(layout(content));
+  });
+
+  var serveStaticFile = function(route, path) {
+    app.get(route, function(request, response) {
+      response.sendfile(path);
+    });
+  };
+
+  serveStaticFile("/app.js", "app.js");
+
+  app.listen(3000);
+  console.log('Listening on port 3000');
+};
+
+var doClient = function() {
+  $(document).ready(function() {
+    console.log("Sup, from the client");
+    var newTodo = todoTemplate("rendered from client");
+    var todosList = $('#todos');
+    todosList.append(newTodo);
+  });
+};
+
+if (isServer) { doServer(); } else { doClient(); }
 ```
 
 ## Installation
