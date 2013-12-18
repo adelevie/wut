@@ -215,14 +215,12 @@ Some fun facts about this app:
 
 `npm install wut`
 
-`wut`'s only client-side dependency is Underscore. We're planning on removing this, but for now, be sure to load Underscore before `wut.js` or `wut.min.js`.
 
 If you'd like to use `wut` on the client, and are also using it on the server, use the convenience methods:
 
 ```javascript
 html(
   head(
-    script("urlToUnderscore"),
     script(wut.minified) // or wut.maxified
   ),
   body(
