@@ -107,7 +107,16 @@
     return htmlElements;
   }
 
-  exportScope = (isServer) ? module.exports : window.wut = {};
-  exportScope.makeTag = makeTag;
-  exportScope.pollute = pollute;
+  var wut = function(name) {
+    return makeTag(name);
+  }
+
+  wut.makeTag = makeTag;
+  wut.pollute = pollute;
+
+  if(isServer) {
+    module.exports = wut;
+  } else {
+    window.wut = wut;
+  }
 })();

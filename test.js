@@ -22,6 +22,12 @@ test("Testing html makeTag", function() {
   console.assert(result === "<html>\nTest\n</html>\n", "html makeTag failed:\n" + result + "\n\n");
 });
 
+test("Testing wut() for article tag", function() {
+  var article = wut("article");
+  var result = article("Test");
+  console.assert(result === "<article>\nTest\n</article>\n", "article wut() failed:\n" + result + "\n\n");
+});
+
 test("Testing p makeTag with attributes", function() {
   var p = makeTag("p");
   var result = p({class: "test"}, "Testing");
