@@ -56,11 +56,11 @@
       args = Array.prototype.slice.call(arguments);
       if (_.isObject(_.first(args))) {
         attributes = _.first(args);
-        selfClosing = (_.rest(args).length == 0);
+        selfClosing = (_.rest(args).length === 0);
         value = _.rest(args).join("");
         if(_.isFunction(_.last(args))) value = value + "();";
       } else {
-        selfClosing = (args.length == 0);
+        selfClosing = (args.length === 0);
         value = args.join("");
       };
       if(selfClosing) {
