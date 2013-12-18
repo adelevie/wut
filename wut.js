@@ -107,18 +107,17 @@
     return htmlElements;
   }
 
-
-
   var isServer = (typeof window === 'undefined');
   if (isServer) {
 
     var fs = require('fs');
     var minified = fs.readFileSync('wut.min.js').toString();
-
+    var maxified = fs.readFileSync('wut.js').toString();
 
     module.exports.makeTag = makeTag;
     module.exports.pollute = pollute
     module.exports.minified = minified;
+    module.exports.maxified = maxified;
   } else {
     window.wut = {};
     window.wut.makeTag = makeTag;
