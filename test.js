@@ -56,5 +56,19 @@ test("Testing making a multi-line script tag implicitly", function() {
   console.assert(result == "<script type=\"text/javascript\">\nfunction (){\n    i = 10;\n    i += 1;\n  }();\n</script>\n", "implicit script tag test failed:\n" + result);
 });
 
+_this = this;
+test("Testing pollute", function() {
+  var elements = wut.htmlElements;
+  console.assert(elements.length > 100, "htmlElements doesn't contain enough elements. Contains: " + elements.length + " HTML elements.");
+
+  wut.pollute(this);
+
+  console.assert(typeof this.html === "function", "pollute didn't create html function");
+  console.assert(typeof this.p === "function", "pollute didn't create p function");
+  console.assert(typeof this.div === "function", "pollute didn't create div function");
+  console.assert(typeof this.article === "function", "pollute didn't create article function");
+  console.assert(typeof _this.html !== "function", "pollute contaminated outside scope.");
+});
+
 console.log("Tests completed successfully. " + tests + " specs, " + tests + " successful, 0 failures.");
 

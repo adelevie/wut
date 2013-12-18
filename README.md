@@ -19,8 +19,8 @@ var li = makeTag("li");
 var p = makeTag("p");
 var a = makeTag("a");
 
-// Or pollute the scope with some premade tag functions (Coming Soon!):
-wut.pollute();
+// Or pollute the scope with HTML5 premade tag functions:
+wut.pollute(this);
 
 // Use a single tag:
 p("foo"); 
