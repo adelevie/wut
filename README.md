@@ -1,9 +1,8 @@
 # wut
 
 A small Javascript templating library.
-Probably not very useful in the real world, but it works, and was a joy to build.
 
-Templates, written in Javascript.
+Don't write Javascript in your templates, write your templates in Javascript.
 
 Usage:
 
@@ -70,7 +69,6 @@ script({type: "text/javascript"},
   }();
 </script>
 */
-
 
 var html = makeTag("html");
 var body = makeTag("body");
