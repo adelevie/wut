@@ -107,17 +107,16 @@
     return htmlElements;
   }
 
+  var wut = {};
+  wut.makeTag = makeTag;
+  wut.pollute = pollute;
+
   if (isServer) {
     var fs = require('fs');
-    var minified = fs.readFileSync('wut.min.js').toString();
-    var maxified = fs.readFileSync('wut.js').toString();
-    module.exports.makeTag = makeTag;
-    module.exports.pollute = pollute
-    module.exports.minified = minified;
-    module.exports.maxified = maxified;
+    wut.minified = fs.readFileSync('wut.min.js').toString();
+    wut.maxified = fs.readFileSync('wut.js').toString();
+    module.exports = wut;
   } else {
-    window.wut = {};
-    window.wut.makeTag = makeTag;
-    window.wut.pollute = pollute
+    window.wut = wut;
   }
 })();
