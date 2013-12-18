@@ -202,6 +202,13 @@ var doClient = function() {
 if (isServer) { doServer(); } else { doClient(); }
 ```
 
+Some fun facts about this app:
+
+- Client and server code are defined in a single file
+- `wut` will actually serve a copy of itself. `wut.minified` and `wut.maxified` return strings of its own source. Use with a `script()` tag!
+- The server statically serves itself.
+- The client calls itself.
+
 ## Installation
 
 `wut` can run server and client-side. To install in Node:
