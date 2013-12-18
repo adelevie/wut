@@ -68,5 +68,11 @@ test("Testing pollute", function() {
   console.assert(typeof _this.html !== "function", "pollute contaminated outside scope.");
 });
 
+test("Testing doctype special function", function() {
+  wut.pollute(this);
+  console.assert(doctype() == "<!DOCTYPE html>\n", "implicit doctype function failed:\n" + doctype());
+  console.assert(doctype("html5") == "<!DOCTYPE html5>\n", "explicit doctype function failed:\n" + doctype("html"));
+});
+
 console.log("Tests completed successfully. " + tests + " specs, " + tests + " successful, 0 failures.");
 

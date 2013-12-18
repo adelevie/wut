@@ -94,12 +94,20 @@
     "var","video",
     "wbr"
   ];
+  
+  var doctype = function(type) {
+    type = type || "html";
+    return "<!DOCTYPE " + type + ">\n";
+  }
+  
   var pollute = function(scope) {
     _.each(htmlElements, function(e) {
       scope[e] = makeTag(e);
     });
+    scope.doctype = doctype;
     return htmlElements;
   }
+
 
   exportScope = (isServer) ? module.exports : window.wut = {};
   exportScope.makeTag = makeTag;
