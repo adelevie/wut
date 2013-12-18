@@ -4,6 +4,10 @@ A small Javascript templating library.
 
 Don't write Javascript in your templates, write your templates in Javascript.
 
+## Why?
+
+`wut` lets you treat your templates as you would any other part of your program. Javascript developers enjoy having everything be a function, but this pattern seems to break down when it comes to templates. `wut` aims to simplify things. Templates are composed of simple functions that take strings and objects as arguments, and only ever return strings.
+
 Usage:
 
 ```javascript
@@ -104,9 +108,37 @@ html({"ng-app":null},
 );
 ```
 
+## Sharing templates between client and server
+
+`wut` makes this easy!
+
+```javascript
+
+```
+
 ## Installation
 
+`wut` can run server and client-side. To install in Node:
+
 `npm install wut`
+
+`wut`'s only client-side dependency is Underscore. We're planning on removing this, but for now, be sure to load Underscore before `wut.js` or `wut.min.js`.
+
+If you'd like to use `wut` on the client, and are also using it on the server, use the convenience methods:
+
+```javascript
+html(
+  head(
+    script("urlToUnderscore"),
+    script(wut.minified) // or wut.maxified
+  ),
+  body(
+    p("Hi!")
+  )
+)
+```
+
+Yes, `wut` will serve a minified copy of itself. WUT?!
 
 ### License
 
