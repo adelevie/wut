@@ -85,11 +85,11 @@ doctype("html") +
 html({"ng-app":null},
   head(
     script({src:"http://code.angularjs.org/1.2.5/angular.min.js"}),
-    script([
-      "function HelloCntl($scope) {",
-      "  $scope.name = 'World';",
-      "}"
-    ].join("\n"))
+    script(function() {
+      function HelloCntl($scope) {
+        $scope.name = 'World'l
+      }
+    })
   ),
   body(
     div({"ng-controller":"HelloCntl"},
