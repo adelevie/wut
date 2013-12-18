@@ -58,37 +58,20 @@ test("Testing making a multi-line script tag implicitly", function() {
 
 _this = this;
 test("Testing pollute", function() {
-  var elements = [
-    "a","abbr","address","area","article","aside","audio",
-    "b","base","bdi","bdo","blockquote","body","br","button",
-    "canvas","caption","cite","code","col","colgroup","command",
-    "data","datagrid","datalist","dd","del","details","dfn","div","dl","dt",
-    "em","embed","eventsource",
-    "fieldset","figcaption","figure","footer","form",
-    "h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html",
-    "i","iframe","img","input","ins",
-    "kbd","keygen","label","legend","li","link",
-    "mark","map","menu","meta","meter",
-    "nav","noscript",
-    "object","ol","optgroup","option","output",
-    "p","param","pre","progress",
-    "q",
-    "ruby","rp","rt",
-    "s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup",
-    "table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track",
-    "u","ul",
-    "var","video",
-    "wbr"
-  ];
+  elements = wut.pollute(this);
   console.assert(elements.length > 100, "htmlElements doesn't contain enough elements. Contains: " + elements.length + " HTML elements.");
-
-  wut.pollute(this);
 
   console.assert(typeof this.html === "function", "pollute didn't create html function");
   console.assert(typeof this.p === "function", "pollute didn't create p function");
   console.assert(typeof this.div === "function", "pollute didn't create div function");
   console.assert(typeof this.article === "function", "pollute didn't create article function");
   console.assert(typeof _this.html !== "function", "pollute contaminated outside scope.");
+});
+
+test("Testing doctype special function", function() {
+  wut.pollute(this);
+  console.assert(doctype() == "<!DOCTYPE html>\n", "implicit doctype function failed:\n" + doctype());
+  console.assert(doctype("html5") == "<!DOCTYPE html5>\n", "explicit doctype function failed:\n" + doctype("html"));
 });
 
 console.log("Tests completed successfully. " + tests + " specs, " + tests + " successful, 0 failures.");

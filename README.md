@@ -38,6 +38,7 @@ p("");
 //=> <p></p>
 
 // Nest some tags:
+doctype("html") +
 html(
   body(
     ul(
@@ -82,6 +83,7 @@ var input = makeTag("input");
 var hr = makeTag("hr");
 
 // Angular.js app (it actually works!):
+doctype("html") +
 html({"ng-app":null},
   head(
     script({src:"http://code.angularjs.org/1.2.5/angular.min.js"}),

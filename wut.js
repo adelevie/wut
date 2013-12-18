@@ -71,6 +71,7 @@
     };
   };
 
+
   var htmlElements = [
     "a","abbr","address","area","article","aside","audio",
     "b","base","bdi","bdo","blockquote","body","br","button",
@@ -93,21 +94,22 @@
     "var","video",
     "wbr"
   ];
-
+  
+  var doctype = function(type) {
+    type = type || "html";
+    return "<!DOCTYPE " + type + ">\n";
+  }
+  
   var pollute = function(scope) {
     _.each(htmlElements, function(e) {
       scope[e] = makeTag(e);
     });
+    scope.doctype = doctype;
+    return htmlElements;
   }
 
-  if (isServer) {
-    module.exports.makeTag = makeTag;
-    module.exports.pollute = pollute;
-    module.exports.htmlElements = htmlElements;
-  } else {
-    window.wut = {};
-    window.wut.makeTag = makeTag;
-    window.wut.pollute = pollute;
-  }
 
+  exportScope = (isServer) ? module.exports : window.wut = {};
+  exportScope.makeTag = makeTag;
+  exportScope.pollute = pollute;
 })();
