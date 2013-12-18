@@ -8,8 +8,5 @@
   },
   "repository": "https://github.com/adelevie/wut",
   "author": "Alan deLevie, Jamon Holmgren",
-  "license": "MIT",
-  "dependencies": {
-    "underscore": "*"
-  }
+  "license": "MIT"
 }
