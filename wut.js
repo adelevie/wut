@@ -8,30 +8,32 @@
   _.isUndefined = function(obj) { return obj === void 0; };
   _.isFunction = function(obj) { return typeof obj === 'function'; };
 
+  var ObjProto = Object.prototype;
+  var hasOwnProperty = ObjProto.hasOwnProperty;
+  _.has = function(obj, key) {
+    return hasOwnProperty.call(obj, key);
+  };
+
   var ArrayProto = Array.prototype;
   var nativeMap = ArrayProto.map;
-  _.map = function(obj, iterator, context) {
+  _.map = function(obj, iterator) {
     var results = [];
     if (obj == null) return results;
-    if (nativeMap && obj.map === nativeMap) return obj.map(iterator, context);
+    if (nativeMap && obj.map === nativeMap) return obj.map(iterator);
     each(obj, function(value, index, list) {
-      results.push(iterator.call(context, value, index, list));
+      results.push(iterator.call(value, index, list));
     });
     return results;
   };
 
   var slice = ArrayProto.slice;
-   _.rest = function(array, n, guard) {
-    return slice.call(array, (n == null) || guard ? 1 : n);
+   _.rest = function(array) {
+    return slice.call(array, 1);
   };
 
-  _.last = function(array, n, guard) {
+  _.last = function(array) {
     if (array == null) return void 0;
-    if ((n == null) || guard) {
-      return array[array.length - 1];
-    } else {
-      return slice.call(array, Math.max(array.length - n, 0));
-    }
+    return array[array.length - 1];
   };
 
   var nativeKeys = Object.keys;
@@ -43,18 +45,18 @@
   };
 
   var nativeForEach = ArrayProto.forEach;
-  _.each = function(obj, iterator, context) {
+  _.each = function(obj, iterator) {
     if (obj == null) return;
     if (nativeForEach && obj.forEach === nativeForEach) {
-      obj.forEach(iterator, context);
+      obj.forEach(iterator);
     } else if (obj.length === +obj.length) {
       for (var i = 0, length = obj.length; i < length; i++) {
-        if (iterator.call(context, obj[i], i, obj) === breaker) return;
+        if (iterator.call(obj[i], i, obj) === breaker) return;
       }
     } else {
       var keys = _.keys(obj);
       for (var i = 0, length = keys.length; i < length; i++) {
-        if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
+        if (iterator.call(obj[keys[i]], keys[i], obj) === breaker) return;
       }
     }
   };
@@ -63,7 +65,8 @@
   // Returns a templating function that's sort of curried.
   // Rather than take an object with multiple keys and values, 
   // the returned function takes a single argument.
-  var t = function(template, value) {
+  //var t = function(template, value) {
+  var t = function(template) {
     return function(value) {
       return template.split("<%= v %>").join(value);
     };
@@ -120,7 +123,7 @@
       if(selfClosing) {
         return t(openTag(name, attributes, true))(value) + "\n";
       } else {
-        return t(openTag(name, attributes) + "\n<%= v %>\n" + closeTag(name))(value) + "\n";
+        return t(openTag(name, attributes, false) + "\n<%= v %>\n" + closeTag(name))(value) + "\n";
       }
     };
   };
@@ -160,7 +163,6 @@
     scope.doctype = doctype;
     return htmlElements;
   }
-
   var isServer = (typeof window === 'undefined');
   if (isServer) {
     var fs = require('fs');
