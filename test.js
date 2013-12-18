@@ -81,7 +81,6 @@ test("Testing serving its own boostrapped minified self", function() {
 
 test("Testing serving its own boostrapped normal self", function() {
   var maxified = wut.maxified;
-  console.log(maxified);
   console.assert(typeof maxified === 'string');
 });
 
