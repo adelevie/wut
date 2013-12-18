@@ -1,5 +1,10 @@
 (function() {
-  var _ = require('underscore');
+  var isServer = (typeof window === 'undefined');
+  if (isServer) {
+    var _ = require('underscore');
+  } else {
+    var _ = window._;
+  }
 
   // Returns a templating function that's sort of curried.
   // Rather than take an object with multiple keys and values, 
@@ -66,15 +71,17 @@
     };
   };
 
-  var htmlElements = ["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","command","data","datagrid","datalist","dd","del","details","dfn","div","dl","dt","em","embed","eventsource","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","mark","map","menu","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","pre","progress","q","ruby","rp","rt","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr"];
 
   var pollute = function(scope) {
+    var htmlElements = ["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","command","data","datagrid","datalist","dd","del","details","dfn","div","dl","dt","em","embed","eventsource","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","mark","map","menu","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","pre","progress","q","ruby","rp","rt","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr"];
     _.each(htmlElements, function(e) {
       scope[e] = makeTag(e);
     });
+    return htmlElements;
   }
 
-  module.exports.makeTag = makeTag;
-  module.exports.pollute = pollute;
-  module.exports.htmlElements = htmlElements;
+  exportScope = (isServer) ? module.exports : window.wut = {};
+  exportScope.makeTag = makeTag;
+  exportScope.pollute = pollute;
+
 })();

@@ -58,10 +58,8 @@ test("Testing making a multi-line script tag implicitly", function() {
 
 _this = this;
 test("Testing pollute", function() {
-  var elements = wut.htmlElements;
+  elements = wut.pollute(this);
   console.assert(elements.length > 100, "htmlElements doesn't contain enough elements. Contains: " + elements.length + " HTML elements.");
-
-  wut.pollute(this);
 
   console.assert(typeof this.html === "function", "pollute didn't create html function");
   console.assert(typeof this.p === "function", "pollute didn't create p function");
