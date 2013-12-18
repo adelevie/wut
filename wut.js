@@ -107,7 +107,21 @@
     return htmlElements;
   }
 
-  exportScope = (isServer) ? module.exports : window.wut = {};
-  exportScope.makeTag = makeTag;
-  exportScope.pollute = pollute;
+
+
+  var isServer = (typeof window === 'undefined');
+  if (isServer) {
+
+    var fs = require('fs');
+    var minified = fs.readFileSync('wut.min.js').toString();
+
+
+    module.exports.makeTag = makeTag;
+    module.exports.pollute = pollute
+    module.exports.minified = minified;
+  } else {
+    window.wut = {};
+    window.wut.makeTag = makeTag;
+    window.wut.pollute = pollute
+  }
 })();

@@ -74,5 +74,10 @@ test("Testing doctype special function", function() {
   console.assert(doctype("html5") == "<!DOCTYPE html5>\n", "explicit doctype function failed:\n" + doctype("html"));
 });
 
+test("Testing serving its own boostrapped self", function() {
+  var minified = wut.minified;
+  console.assert(typeof minified === 'string');
+});
+
 console.log("Tests completed successfully. " + tests + " specs, " + tests + " successful, 0 failures.");
 
