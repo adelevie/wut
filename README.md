@@ -144,13 +144,11 @@ var doServer = function() {
   app.use(express.bodyParser());
   var _ = require('underscore');
   
-  var underscoreCdn = "http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js";
   var jqCdn = "http://code.jquery.com/jquery-1.10.1.min.js";
 
   var layout = function(content) {
     return html(
       head(
-        script({src: underscoreCdn}, ""),
         script({src: jqCdn}, ""),
         script(wut.minified),
         script({src: "app.js"}, "")
