@@ -1,5 +1,10 @@
 (function() {
-  var _ = require('underscore');
+  var isServer = (typeof window === 'undefined');
+  if (isServer) {
+    var _ = require('underscore');
+  } else {
+    var _ = window._;
+  }
 
   // Returns a templating function that's sort of curried.
   // Rather than take an object with multiple keys and values, 
@@ -70,6 +75,13 @@
 
   }
 
-  module.exports.makeTag = makeTag;
-  module.exports.script = script;
+  if (isServer) {
+    module.exports.makeTag = makeTag;
+    module.exports.script = script;
+  } else {
+    window.wut = {};
+    window.wut.makeTag = makeTag;
+    window.wut.script = script;
+  }
+
 })();
