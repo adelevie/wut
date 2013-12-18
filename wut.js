@@ -56,11 +56,11 @@
       args = Array.prototype.slice.call(arguments);
       if (_.isObject(_.first(args))) {
         attributes = _.first(args);
-        selfClosing = (_.rest(args).length == 0);
+        selfClosing = (_.rest(args).length === 0);
         value = _.rest(args).join("");
         if(_.isFunction(_.last(args))) value = value + "();";
       } else {
-        selfClosing = (args.length == 0);
+        selfClosing = (args.length === 0);
         value = args.join("");
       };
       if(selfClosing) {
@@ -107,7 +107,16 @@
     return htmlElements;
   }
 
-  exportScope = (isServer) ? module.exports : window.wut = {};
-  exportScope.makeTag = makeTag;
-  exportScope.pollute = pollute;
+  var wut = function(name) {
+    return makeTag(name);
+  }
+
+  wut.makeTag = makeTag;
+  wut.pollute = pollute;
+
+  if(isServer) {
+    module.exports = wut;
+  } else {
+    window.wut = wut;
+  }
 })();

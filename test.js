@@ -19,19 +19,25 @@ var makeTag = wut.makeTag;
 test("Testing html makeTag", function() {
   var html = makeTag("html");
   var result = html("Test");
-  console.assert(result == "<html>\nTest\n</html>\n", "html makeTag failed:\n" + result + "\n\n");
+  console.assert(result === "<html>\nTest\n</html>\n", "html makeTag failed:\n" + result + "\n\n");
+});
+
+test("Testing wut() for article tag", function() {
+  var article = wut("article");
+  var result = article("Test");
+  console.assert(result === "<article>\nTest\n</article>\n", "article wut() failed:\n" + result + "\n\n");
 });
 
 test("Testing p makeTag with attributes", function() {
   var p = makeTag("p");
   var result = p({class: "test"}, "Testing");
-  console.assert(result == "<p class=\"test\">\nTesting\n</p>\n", "p makeTag with attributes failed:\n" + result + "\n\n");
+  console.assert(result === "<p class=\"test\">\nTesting\n</p>\n", "p makeTag with attributes failed:\n" + result + "\n\n");
 });
 
 test("Testing self-closing tag", function() {
   var input = makeTag("input");
   var result = input({value: "My Input"});
-  console.assert(result == "<input value=\"My Input\"/>\n", "input makeTag self-closing tag failed:\n" + result + "\n\n");
+  console.assert(result === "<input value=\"My Input\"/>\n", "input makeTag self-closing tag failed:\n" + result + "\n\n");
 });
 
 test("Testing making a multi-line script tag explicitly", function() {
@@ -41,8 +47,8 @@ test("Testing making a multi-line script tag explicitly", function() {
     i = 10;
     i += 1;
   }.toString() + "();");
-  console.assert(i == 0, "Script has side effects! Failed.");
-  console.assert(result == "<script type=\"text/javascript\">\nfunction (){\n    i = 10;\n    i += 1;\n  }();\n</script>\n", "explicit script tag test failed:\n" + result);
+  console.assert(i === 0, "Script has side effects! Failed.");
+  console.assert(result === "<script type=\"text/javascript\">\nfunction (){\n    i = 10;\n    i += 1;\n  }();\n</script>\n", "explicit script tag test failed:\n" + result);
 });
 
 test("Testing making a multi-line script tag implicitly", function() {
@@ -52,8 +58,8 @@ test("Testing making a multi-line script tag implicitly", function() {
     i = 10;
     i += 1;
   });
-  console.assert(i == 0, "Script has side effects! Failed.");
-  console.assert(result == "<script type=\"text/javascript\">\nfunction (){\n    i = 10;\n    i += 1;\n  }();\n</script>\n", "implicit script tag test failed:\n" + result);
+  console.assert(i === 0, "Script has side effects! Failed.");
+  console.assert(result === "<script type=\"text/javascript\">\nfunction (){\n    i = 10;\n    i += 1;\n  }();\n</script>\n", "implicit script tag test failed:\n" + result);
 });
 
 _this = this;
@@ -70,8 +76,8 @@ test("Testing pollute", function() {
 
 test("Testing doctype special function", function() {
   wut.pollute(this);
-  console.assert(doctype() == "<!DOCTYPE html>\n", "implicit doctype function failed:\n" + doctype());
-  console.assert(doctype("html5") == "<!DOCTYPE html5>\n", "explicit doctype function failed:\n" + doctype("html"));
+  console.assert(doctype() === "<!DOCTYPE html>\n", "implicit doctype function failed:\n" + doctype());
+  console.assert(doctype("html5") === "<!DOCTYPE html5>\n", "explicit doctype function failed:\n" + doctype("html"));
 });
 
 console.log("Tests completed successfully. " + tests + " specs, " + tests + " successful, 0 failures.");
